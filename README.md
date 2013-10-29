@@ -1,6 +1,6 @@
-# Active Merchant Billing Integration for PayU.in
+# PayU-Integration-Kit-ROR
 
-Active Merchant is used in most modern Ruby applications which deal with financial transactions. It was developed for usage in Ruby on Rails web applications and integrates seamlessly as a plugin but it also works excellently as a stand alone library. (See [ActiveMerchant](http://activemerchant.org/))
+PayU-Integration-Kit-ROR is used in most modern Ruby applications which deal with financial transactions. It was developed for usage in Ruby on Rails web applications and integrates seamlessly as a plugin but it also works excellently as a stand alone library. (See [ActiveMerchant](http://activemerchant.org/))
 
 This library provides support for payment gateway PayU by iBiBo Group. (See [PayU.in](http://payu.in/))
 
