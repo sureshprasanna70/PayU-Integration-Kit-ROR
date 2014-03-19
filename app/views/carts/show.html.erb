@@ -1,0 +1,53 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Shopping Cart</h1>
+
+<table id="cart" class="table table-striped">
+  <tr>
+    <th>Product</th>
+    <th>Qty</th>
+    <th class="price">Unit Price</th>
+    <th class="price">Full Price</th>
+  </tr>
+  <% for line_item in @cart.line_items %>
+    <tr class="<%= cycle :odd, :even %>">
+      <td><%=h line_item.product.name %></td>
+      <td class="qty"><%= line_item.quantity %></td>
+      <td class="price"><%= number_to_currency(line_item.unit_price) %></td>
+      <td class="price"><%= number_to_currency(line_item.full_price) %></td>
+    </tr>
+  <% end %>
+  <tr>
+    <td class="total price" colspan="4">
+      Total: <%= number_to_currency @cart.total_price %>
+    </td>
+  </tr>
+</table>
+<!-- 
+  if you have duplicate order id errors in testing mode.
+  @cart.id can be replaced with a random number for testing rand(36**10).to_s(36) 
+
+  Modify/Change below details as per your app.
+-->
+<% payment_service_for @cart.id, $payu_merchant_id,
+                                   :amount => @cart.total_price,
+                                   :service => :payu_in,                                   
+                                   :html => { :id => 'payment-form' } do |service| %>
+
+
+  <% for line_item in @cart.line_items %>
+    <% service.auto_settle :prod => line_item.product.id.to_s + ',' + line_item.quantity.to_s,
+                         :price => line_item.unit_price,
+                         :name => line_item.product.name,
+                         :description => line_item.product.description %>
+  <% end %>
+
+  <% service.credential2 'book' %>  
+  <% service.customer :first_name => "Sandeep",
+      :last_name => "Kumar",
+      :phone => "1234567890",
+      :email => "sandeep.kumar@payu.in" %>
+  <% service.return_url 'http://localhost:3000/payu_callback' %>      
+
+  <input type=submit value=" Pay for your Order ">
+<% end %>

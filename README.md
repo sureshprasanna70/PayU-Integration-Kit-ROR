@@ -4,45 +4,26 @@ PayU-Integration-Kit-ROR is used in most modern Ruby applications which deal wit
 
 This library provides support for payment gateway PayU by iBiBo Group. (See [PayU.in](http://payu.in/))
 
-# Installation
+# Setup
 
-* using with Rails 2.x
+* Configuration 
 
-  write the following line in config/environment.rb
+  specify your mode of payment as per your app env.
+  config/development.rb
 
-      config.gem 'active_merchant_payu_india'
+  set your keys which you have received from payu here.
 
-  and run
+* Files to go through for workflow.
 
-      rake gems:install
+  config/environment.rb
+  config/development.rb
+  app/controllers/CartsController.rb
+  app/views/carts/show.html.erb 
 
-* using with Bundler or Rails 3.x
+* Start Transacting
 
-  write the following line in Gemfile
-
-      gem 'active_merchant_payu_india'
-
-  and run
-
-      bundle install
-
-* using traditionally
-
-  run
-
-      sudo gem install active_merchant_payu_india
-
-  and add the following line to the file where your ruby file
-
-      require 'active_merchant_payu_india'
-
-# Configuration
-
-Configuration goes here
-
-# Example Usage
-
-    require 'active_merchant_payu_in'
+  bundle
+  rails s
 
 # TODO
 
@@ -54,6 +35,7 @@ Configuration goes here
 
 # Author(s)
 Ashok Vishwakarma ( akvlko  at gmail dot com )
+Sandeep Kumar ( sandeep dot kumar at payu dot in )
 
 # Copyright
 Copyright (c) 2013 PayU India
