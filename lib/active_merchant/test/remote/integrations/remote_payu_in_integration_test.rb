@@ -4,7 +4,7 @@ class RemotePayuInIntegrationTest < Test::Unit::TestCase
   include ActiveMerchant::Billing::Integrations
 
   def setup
-    @payu_in = PayuIn::Notification.new(http_raw_data, :credential1 => 'C0Dr8m', :credential2 => '3sf0jURk')
+    @payu_in = PayuIn::Notification.new(http_raw_data, :merchant_id => 'C0Dr8m', :secret_key => '3sf0jURk')
   end
 
   def test_raw

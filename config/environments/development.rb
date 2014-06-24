@@ -38,8 +38,11 @@ ExampleStore::Application.configure do
   # ActiveMerchant PayuIn
   config.after_initialize do
     ActiveMerchant::Billing::Base.mode = :test    
-    $payu_merchant_id = ActiveMerchant::Billing::Integrations::PayuIn.merchant_id = 'YOUR PAYU MERCHANT ID'
-    $payu_secret_key = ActiveMerchant::Billing::Integrations::PayuIn.secret_key = 'YOUR PAYU SALT/SECRET KEY'    
+    ActiveMerchant::Billing::PayuInGateway.new(:merchant_id => 'C0Dr8m', :secret_key => '3sf0jURk')
+    # store in global variables so that these can be called anywhere in application.
+    $payu_merchant_id = 'C0Dr8m'
+    # should not be used in payment_service_for helper method or in any form as hidden field so that it can be hacked easily. 
+    $payu_secret_key = ActiveMerchant::Billing::PayuInGateway.secret_key
   end
 
 end

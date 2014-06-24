@@ -11,8 +11,6 @@ module ActiveMerchant #:nodoc:
 
         mattr_accessor :test_url
         mattr_accessor :production_url
-        mattr_accessor :merchant_id
-        mattr_accessor :secret_key
 
         self.test_url = 'https://test.payu.in/_payment.php'
         self.production_url = 'https://secure.payu.in/_payment.php'
