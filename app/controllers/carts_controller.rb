@@ -1,5 +1,5 @@
 class CartsController < ApplicationController
-  include ActiveMerchant::Billing::Integrations
+  include OffsitePayments::Integrations
 
   def index
     @carts = Cart.all
@@ -47,7 +47,7 @@ class CartsController < ApplicationController
           @cart.status = "failed"
           render :text =>"Order Failed! MD5 Hash does not match!"
         end
-        ensure
+      ensure
         @cart.save
       end
     end    

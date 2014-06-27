@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', '3.2.8'
+gem 'rails', '3.2.14'
 gem 'thin', '1.5.1'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
@@ -24,7 +24,8 @@ end
 
 gem 'jquery-rails', '2.2.1'
 # gem 'activemerchant', '1.36.0'
-gem 'activemerchant', :path => "lib/active_merchant"
+# gem 'activemerchant', :path => "lib/active_merchant"
+gem 'offsite_payments'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
