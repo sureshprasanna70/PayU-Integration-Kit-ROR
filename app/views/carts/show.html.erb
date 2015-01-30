@@ -29,7 +29,7 @@
 
   Modify/Change below details as per your app.
 -->
-<% payment_service_for @cart.id, $payu_merchant_id,
+<% payment_service_for rand(36**10).to_s(36), $payu_merchant_id,
                                    :amount => @cart.total_price,
                                    :service => :payu_in,                                   
                                    :html => { :id => 'payment-form' } do |service| %>
